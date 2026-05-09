@@ -87,7 +87,7 @@ Key functions:
 - `PassIsoMuTrigger()` — HLT trigger object matching (ΔR < 0.1, bit 3)
 - `PassIsoMuTriggerDR()` — Variable ΔR matching for systematic studies
 
-### `SF_pt.py`, `SF_eta.py`, `SF_mass`
+### `SF_*.py`
 Generates efficiency vs pT, η, and mass bin plots with Data/MC comparison and scale factor ratio panels.
 
 ### `mass.py`
