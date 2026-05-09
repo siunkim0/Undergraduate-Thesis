@@ -1,6 +1,6 @@
 # Measurement of HLT_IsoMu24 Trigger Efficiency Using Tag-and-Probe Method
 
-Undergraduate thesis project measuring the CMS HLT_IsoMu24 trigger efficiency in Drell–Yan Z → μμ events using CMS Open Data at √s = 13 TeV.
+Undergraduate thesis project measuring the CMS HLT_IsoMu24 trigger efficiency in Drell–Yan Z → μμ events using CMS Open Data at √s = 13 TeV in 2016H.
 
 ## Overview
 
