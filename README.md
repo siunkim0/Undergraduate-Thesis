@@ -2,14 +2,17 @@
 
 Undergraduate thesis project measuring the CMS HLT_IsoMu24 trigger efficiency in Drell–Yan Z → μμ events using CMS Open Data in 2016H at √s = 13 TeV.
 
+
 ## Overview
 
 This analysis measures the efficiency of the CMS single-muon trigger path `HLT_IsoMu24` using the Tag-and-Probe (T&P) method applied to Z → μμ events from the Run 2016H data-taking period. The trigger efficiency is measured as a function of muon pT, η, and dimuon invariant mass, and data-to-simulation scale factors are extracted.
+
 
 **Main result:**
 ```
 SF = 0.934 ± 0.001 (stat.) ± 0.002 (syst.)
 ```
+
 
 ## Data and MC Samples
 
@@ -19,6 +22,7 @@ SF = 0.934 ± 0.001 (stat.) ± 0.002 (syst.)
 | ZToMuMu (50–120 GeV) | Powheg + Pythia 8, NLO σ = 2116 pb | 2,955,000 |
 
 Data format: NanoAOD v9
+
 
 ## Method
 
@@ -33,6 +37,7 @@ Data format: NanoAOD v9
 | **Mass window** | \|m_μμ − 91.2\| < 10 GeV |
 | **Pair separation** | ΔR(tag, probe) > 0.3 |
 
+
 ### Trigger Object Matching
 
 Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is performed using the `TrigObj` collection:
@@ -40,6 +45,7 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 - HLT filter bit set (bit 3)
 - pT > 24 GeV
 - ΔR < 0.1 (CMS standard for HLT matching)
+
 
 ## Results
 
@@ -49,6 +55,7 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 |----------|--------|------|-----|
 | Overall (86–96 GeV) | 0.757 ± 0.001 | 0.811 ± 0.001 | 0.934 ± 0.001 ± 0.002 |
 
+
 ### Systematic Uncertainties
 
 | Source | ΔSF |
@@ -56,6 +63,7 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 | Mass window variation (±5 to ±20 GeV) | 0.002 |
 | ΔR matching cone (0.05 to 0.20) | < 0.001 |
 | **Total** | **0.002** |
+
 
 ## Project Structure
 
@@ -87,8 +95,10 @@ Key functions:
 - `PassIsoMuTrigger()` — HLT trigger object matching (ΔR < 0.1, bit 3)
 - `PassIsoMuTriggerDR()` — Variable ΔR matching for systematic studies
 
+
 ### `SF_*.py`
 Generates efficiency vs pT, η, and mass bin plots with Data/MC comparison and scale factor ratio panels.
+
 
 ### `mass.py`
 Generates the invariant mass distribution plot (background estimation) and computes systematic uncertainty tables (mass window and ΔR variations).
