@@ -71,16 +71,16 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 .
 ├── Analyzers/
 │   └── src/
-│       ├── MeasTrigEff.cc              # Main T&P analysis code
+│       ├── MeasTrigEff.cc               # Main T&P analysis code
 │       └── MeasTrigEff.h                # Header file
-├── Tools/
-│   ├── SF_pt.py                # Efficiency & SF plotting (pT, η, mass)
+├── Tools/                               
+│   ├── SF_pt.py                         # Efficiency & SF plotting (pT, η, mass)
 │   └── SF_eta.py              
 │   └── SF_mass.py
-│   └── mass.py                 # Systematic uncertainty & mass distribution
-├── thesis/
-│   ├── thesis_trigger_efficiency.tex   # LaTeX source
-│   └── figures/                        # Plot PDFs
+│   └── mass.py                          # Systematic uncertainty & mass distribution
+├── figures/
+├── download.sh                          # download the data
+├── thesis.pdf                           
 └── README.md
 ```
 
