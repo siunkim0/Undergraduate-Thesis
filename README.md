@@ -70,9 +70,8 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 ```
 .
 ├── Analyzers/
-│   └── src/
-│       ├── MeasTrigEff.cc               # Main T&P analysis code
-│       └── MeasTrigEff.h                # Header file
+│   ├── MeasTrigEff.cc               # Main T&P analysis code
+│   └── MeasTrigEff.h                # Header file
 ├── Tools/                               
 │   ├── SF_pt.py                         # Efficiency & SF plotting (pT, η, mass)
 │   └── SF_eta.py              
