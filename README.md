@@ -8,6 +8,15 @@ Undergraduate thesis project measuring the CMS HLT_IsoMu24 trigger efficiency in
 This analysis measures the efficiency of the CMS single-muon trigger path `HLT_IsoMu24` using the Tag-and-Probe (T&P) method applied to Z → μμ events from the Run 2016H data-taking period. The trigger efficiency is measured as a function of muon pT, η, and dimuon invariant mass, and data-to-simulation scale factors are extracted.
 
 
+## Motivation
+
+Trigger efficiency measurements are a critical component of any CMS physics analysis. Without accurate knowledge of how efficiently the trigger selects events, cross section measurements and other precision results carry uncontrolled systematic uncertainties. The standard technique for measuring trigger efficiency at CMS is the Tag-and-Probe method, but it is typically performed internally by CMS members using proprietary tools and calibrations.
+
+This project explores whether the same measurement can be performed independently using publicly available CMS Open Data. This is non-trivial because the SKNanoAnalyzer framework was not designed for Open Data — it assumes access to CMS-internal era definitions, correction files, and sample databases. Adapting the framework to handle a custom `2016UL_OpenData` era required resolving multiple compatibility issues (see [Troubleshooting](#troubleshooting-cms-open-data-with-sknanoanalyzer)).
+
+The project serves both as an undergraduate thesis and as a practical guide for anyone attempting to use CMS Open Data with existing CMS analysis frameworks.
+
+
 **Main result:**
 ```
 SF = 0.934 ± 0.001 (stat.) ± 0.002 (syst.)
