@@ -117,17 +117,7 @@ Generates the invariant mass distribution plot (background estimation) and compu
 
 ### Execution
 ```bash
-# Compile
-cd $SKNANO_HOME && make -j4
-
-# Run on data
-SKNano.py -a MeasTrigEff -i SingleMuon_2016H -n 100 -e 2016UL_OpenData
-
-# Run on MC
-SKNano.py -a MeasTrigEff -i ZToMuMu_OpenData -n 100 -e 2016UL_OpenData
-
-# Merge output
-hadd Muon.root /path/to/output/hists_*.root
+# Run the data by SKNanoAnalyzer
 
 # Plot results
 python Tools/SF_*.py
