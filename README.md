@@ -286,7 +286,17 @@ The ΔR < 0.1 cone size follows the CMS recommendation for HLT matching (validat
 
 ---
 
-### 7. Missing branches in Open Data NanoAOD
+### 7. Efficiency of MC aboves 1
+
+**Symptom:** This did not happen on this project, but this happens sometimes.
+
+**Cause:** Since some MC events have negative weight, the number of events after cut increases and that makes the efficiency bigger than 1.
+
+**Solution:** Make the bin bigger on big energy region that has few events and usually has negative event weight.
+
+---
+
+### 8. Missing branches in Open Data NanoAOD
 
 **Symptom:** Warnings during initialization:
 ```
@@ -308,7 +318,7 @@ The ΔR < 0.1 cone size follows the CMS recommendation for HLT matching (validat
 | `MyCorrection.cc` (`GetEraConfig`) | Change `2016UL_OpenData` paths from `preVFP` → `postVFP` |
 | `ZToMuMu_OpenData.json` | Set correct `nmc`, `sumsign`, `sumW` values |
 | `HLT_Path.json` | Set correct luminosity for Run2016H |
-| `Probe.cpp` | Implement manual `TrigObj` matching |
+| `MeasTrigEff.cc` | Implement manual `TrigObj` matching |
 
 ## References
 
