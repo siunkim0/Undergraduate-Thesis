@@ -290,7 +290,7 @@ The ΔR < 0.1 cone size follows the CMS recommendation for HLT matching (validat
 
 **Cause:** Since some MC events have negative weight, the number of events after cut increases and that makes the efficiency bigger than 1.
 
-**Solution:** Make the bin bigger on big energy region that has few events and usually has negative event weight.
+**Solution:** Make the bin bigger on big mass region that has few events and usually has negative event weight.
 
 ---
 
