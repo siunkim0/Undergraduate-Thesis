@@ -288,7 +288,7 @@ The ΔR < 0.1 cone size follows the CMS recommendation for HLT matching (validat
 
 ### 7. Efficiency of MC aboves 1
 
-**Symptom:** This did not happen on this project, but this happens sometimes.
+**Symptom:** This did not happen on this project, but this would happen on measuring the efficiency.
 
 **Cause:** Since some MC events have negative weight, the number of events after cut increases and that makes the efficiency bigger than 1.
 
