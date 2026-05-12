@@ -79,8 +79,8 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 ```
 .
 ├── Analyzers/
-│   ├── MeasTrigEff.cc               # Main T&P analysis code
-│   └── MeasTrigEff.h                # Header file
+│   ├── Probe.cc               # Main T&P analysis code
+│   └── Probe.h                # Header file
 ├── Tools/                               
 │   ├── SF_pt.py                         # Efficiency & SF plotting (pT, η, mass)
 │   └── SF_eta.py              
@@ -94,7 +94,7 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 
 ## Key Files
 
-### `MeasTrigEff.cc`
+### `Probe.cc`
 The main analysis code implementing the Tag-and-Probe method. Inherits from `AnalyzerCore` in the SKNanoAnalyzer framework.
 
 Key functions:
@@ -316,7 +316,7 @@ The ΔR < 0.1 cone size follows the CMS recommendation for HLT matching (validat
 | `MyCorrection.cc` (`GetEraConfig`) | Change `2016UL_OpenData` paths from `preVFP` → `postVFP` |
 | `ZToMuMu_OpenData.json` | Set correct `nmc`, `sumsign`, `sumW` values |
 | `HLT_Path.json` | Set correct luminosity for Run2016H |
-| `MeasTrigEff.cc` | Implement manual `TrigObj` matching |
+| `Probe.cc` | Implement manual `TrigObj` matching |
 
 ## References
 
