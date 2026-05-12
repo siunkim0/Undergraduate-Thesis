@@ -219,7 +219,7 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
 }
 
 bool Probe::PassIsoMuTrigger(const Muon &mu, const RVec<TrigObj> &trigObjs) {
-    const float trig_pt_cut = (DataEra == "2016UL_OpenData") ? 27. : 24.;
+    const float trig_pt_cut = (DataEra == "2017") ? 27. : 24.;
 
     for (const auto &trigObj : trigObjs) {
         if (!trigObj.isMuon()) continue;
@@ -232,7 +232,7 @@ bool Probe::PassIsoMuTrigger(const Muon &mu, const RVec<TrigObj> &trigObjs) {
 }
 
 bool Probe::PassIsoMuTriggerDR(const Muon &mu, const RVec<TrigObj> &trigObjs, float dRcut) {
-    const float trig_pt_cut = (DataEra == "2016UL_OpenData") ? 27. : 24.;
+    const float trig_pt_cut = (DataEra == "2017") ? 27. : 24.;
 
     for (const auto &trigObj : trigObjs) {
         if (!trigObj.isMuon()) continue;
