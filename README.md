@@ -327,5 +327,6 @@ The ΔR < 0.1 cone size follows the CMS recommendation for HLT matching (validat
 
 **Siun Kim**
 Department of Physics, Sungkyunkwan University
+---
 
 *This work uses CMS Open Data released under CERN's Open Data policy.*
