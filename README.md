@@ -54,7 +54,12 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 - HLT filter bit set (bit 1)
 - pT > 24 GeV
 - ΔR < 0.1 (CMS standard for HLT matching)
+the bit number of HLT_IsoMu24 is 1.
+The name of the last filter is "hltL3crIsoL1sMu22L1f0L2f10QL3f24QL3trkIsoFiltered0p09", and it's bit 1.
 
+From 
+https://github.com/cms-analysis/HiggsAnalysis-KITHiggsToTauTau/blob/master/data/ArtusConfigs/Run2Analysis/mm.json 
+https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/triggerObjects_cff.py
 
 ## Results
 
@@ -322,6 +327,8 @@ The ΔR < 0.1 cone size follows the CMS recommendation for HLT matching (validat
 
 1. CMS Collaboration, "Performance of the CMS muon trigger system in proton-proton collisions at √s = 13 TeV," JINST 16 (2021) P07001 ([arXiv:2102.04790](https://arxiv.org/abs/2102.04790))
 2. S. D. Drell and T.-M. Yan, "Massive Lepton-Pair Production in Hadron-Hadron Collisions at High Energies," Phys. Rev. Lett. 25 (1970) 316
+3. https://github.com/cms-analysis/HiggsAnalysis-KITHiggsToTauTau/blob/master/data/ArtusConfigs/Run2Analysis/mm.json
+4. https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/triggerObjects_cff.py
 
 ## Author
 
