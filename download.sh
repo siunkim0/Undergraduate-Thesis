@@ -1,4 +1,4 @@
-# The Data Path 2016H SingleMuon
+# The Data Path of 2016H SingleMuon
 # https://opendata.cern.ch/record/30563
 
 # 파일 리스트 저장

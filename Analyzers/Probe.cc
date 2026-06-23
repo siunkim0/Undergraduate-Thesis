@@ -97,7 +97,7 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
     //  Tag:   Tight ID + PFIso tight + pt > TriggerSafePtCut + HLT trigger-matched
     //  Probe: (1) TightProbe: Tight ID + PFIso tight
     //         (2) LooseProbe: loose muon
-    //  Pass:  dR < 0.1 to HLT trigger object (bit 3)
+    //  Pass:  dR < 0.1 to HLT trigger object (bit 1)
     //  Mass window: |Mll - 91.2| < 10 GeV (nominal)
     //
     //  Systematic variations:
@@ -224,7 +224,7 @@ bool Probe::PassIsoMuTrigger(const Muon &mu, const RVec<TrigObj> &trigObjs) {
     for (const auto &trigObj : trigObjs) {
         if (!trigObj.isMuon()) continue;
         if (trigObj.DeltaR(mu) > 0.1) continue;
-        if (!trigObj.hasBit(3)) continue;
+        if (!trigObj.hasBit(1)) continue;
         if (trigObj.Pt() < trig_pt_cut) continue;
         return true;
     }
@@ -237,7 +237,7 @@ bool Probe::PassIsoMuTriggerDR(const Muon &mu, const RVec<TrigObj> &trigObjs, fl
     for (const auto &trigObj : trigObjs) {
         if (!trigObj.isMuon()) continue;
         if (trigObj.DeltaR(mu) > dRcut) continue;
-        if (!trigObj.hasBit(3)) continue;
+        if (!trigObj.hasBit(1)) continue;
         if (trigObj.Pt() < trig_pt_cut) continue;
         return true;
     }

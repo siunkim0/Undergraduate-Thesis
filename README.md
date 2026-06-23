@@ -42,7 +42,7 @@ Data format: NanoAOD v9
 | **Tag** | Tight ID + PF Iso tight + pT > 26 GeV + HLT trigger matched (ΔR < 0.1) |
 | **Probe (Tight)** | Tight ID + PF Iso tight + pT > 10 GeV |
 | **Probe (Loose)** | Tracker muon + pT > 10 GeV |
-| **Pass** | Probe matched to HLT trigger object (ΔR < 0.1, filterBit 3) |
+| **Pass** | Probe matched to HLT trigger object (ΔR < 0.1, filterBit 1) |
 | **Mass window** | \|m_μμ − 91.2\| < 10 GeV |
 | **Pair separation** | ΔR(tag, probe) > 0.3 |
 
@@ -51,7 +51,7 @@ Data format: NanoAOD v9
 
 Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is performed using the `TrigObj` collection:
 - Muon trigger object (|pdgId| = 13)
-- HLT filter bit set (bit 3)
+- HLT filter bit set (bit 1)
 - pT > 24 GeV
 - ΔR < 0.1 (CMS standard for HLT matching)
 
@@ -100,7 +100,7 @@ The main analysis code implementing the Tag-and-Probe method. Inherits from `Ana
 Key functions:
 - `executeEventFromParameter()` — Event selection, weight calculation, T&P call
 - `measIsoMu24TrigEff()` — Tag-and-Probe logic with histogram filling
-- `PassIsoMuTrigger()` — HLT trigger object matching (ΔR < 0.1, bit 3)
+- `PassIsoMuTrigger()` — HLT trigger object matching (ΔR < 0.1, bit 1)
 - `PassIsoMuTriggerDR()` — Variable ΔR matching for systematic studies
 
 
@@ -272,7 +272,7 @@ bool PassIsoMuTrigger(const Muon &mu, const RVec<TrigObj> &trigObjs) {
     for (const auto &trigObj : trigObjs) {
         if (!trigObj.isMuon()) continue;
         if (trigObj.DeltaR(mu) > 0.1) continue;   // HLT: dR < 0.1
-        if (!trigObj.hasBit(3)) continue;           // HLT filter bit
+        if (!trigObj.hasBit(1)) continue;           // HLT filter bit
         if (trigObj.Pt() < 24.) continue;           // HLT_IsoMu24 threshold
         return true;
     }
