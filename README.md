@@ -58,6 +58,7 @@ the bit number of HLT_IsoMu24 is 1.
 The name of the last filter is "hltL3crIsoL1sMu22L1f0L2f10QL3f24QL3trkIsoFiltered0p09", and it's bit 1.
 
 From 
+
 https://github.com/cms-analysis/HiggsAnalysis-KITHiggsToTauTau/blob/master/data/ArtusConfigs/Run2Analysis/mm.json
 
 https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/triggerObjects_cff.py
