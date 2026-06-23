@@ -54,6 +54,7 @@ Since `Muon::TriggerMatched()` is not available in NanoAOD, trigger matching is 
 - HLT filter bit set (bit 1)
 - pT > 24 GeV
 - ΔR < 0.1 (CMS standard for HLT matching)
+
 the bit number of HLT_IsoMu24 is 1.
 The name of the last filter is "hltL3crIsoL1sMu22L1f0L2f10QL3f24QL3trkIsoFiltered0p09", and it's bit 1.
 
