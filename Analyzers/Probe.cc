@@ -119,6 +119,11 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
         if (tag.Charge() + probe.Charge() != 0) return;
 
         double Mll = (tag + probe).M();
+
+        // ──── dR(tag, probe) distribution (before the dR cut) ────
+        // To inspect whether the dR(tag, probe) < 0.3 cut is reasonable
+        FillHist(this_syst + "/" + prefix + "_dR_TagProbe", tag.DeltaR(probe), weight, 100, 0, 5);
+
         if (tag.DeltaR(probe) < 0.3) return;
 
         // ──── Invariant mass distribution (for background estimation) ────
@@ -144,7 +149,7 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
                         FillHist(this_syst + "/" + prefix + "_" + tag_mw + "_Overall_Pt_AfterTrig",
                                  probe.Pt(), weight, 100, 0, 200);
                     }
-                }
+                } 
             }
         }
 
