@@ -113,6 +113,10 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
     //==== Tag muon kinematic cuts
     if (tag.Pt() < TriggerSafePtCut) return;
 
+    //==== Per-event probe multiplicity counters (nominal selection: OS, dR>0.3, |Mll-91.2|<10)
+    int nTightProbe = 0;
+    int nLooseProbe = 0;
+
     //==== Common T&P fill logic
     auto fillTnP = [&](const Muon &probe, const TString &prefix) {
         if (&probe == &tag) return;
@@ -139,7 +143,7 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
         // Tight probe only, overall pT, for systematic uncertainty estimation
         if (prefix.Contains("TightProbe")) {
             const bool probePassTrigSyst = PassIsoMuTrigger(probe, AllTrigObjs);
-            const float massWindows[] = {5., 15., 20.};  // nominal (10) done after mass cut
+            const float massWindows[] = {5., 10., 15., 20.};  // 10 = nominal, measured here with the same logic
             for (float hw : massWindows) {
                 if (fabs(Mll - 91.2) < hw) {
                     TString tag_mw = Form("MW%.0f", hw);
@@ -155,6 +159,10 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
 
         // ──── Apply nominal mass window ────
         if (fabs(Mll - 91.2) > 10.) return;
+
+        //==== Count probes passing the nominal selection (for multiplicity diagnostics)
+        if (prefix.Contains("TightProbe")) nTightProbe++;
+        else                               nLooseProbe++;
 
         const bool probePassTrig = PassIsoMuTrigger(probe, AllTrigObjs);
 
@@ -174,12 +182,10 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
             }
         }
 
-        //==== Overall (86-96 GeV)
-        if (Mll >= 86. && Mll < 96.) {
-            FillHist(this_syst + "/" + prefix + "_Overall_Pt_BeforeTrig", probe.Pt(), weight, 100, 0, 200);
-            if (probePassTrig) {
-                FillHist(this_syst + "/" + prefix + "_Overall_Pt_AfterTrig", probe.Pt(), weight, 100, 0, 200);
-            }
+        //==== Overall (full nominal window |Mll-91.2| < 10, already applied above)
+        FillHist(this_syst + "/" + prefix + "_Overall_Pt_BeforeTrig", probe.Pt(), weight, 100, 0, 200);
+        if (probePassTrig) {
+            FillHist(this_syst + "/" + prefix + "_Overall_Pt_AfterTrig", probe.Pt(), weight, 100, 0, 200);
         }
 
         //==== Mass bin (1 GeV bins: 86-96 GeV)
@@ -196,8 +202,8 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
         }
 
         // ──── Systematic: dR matching cone variation ────
-        // Tight probe only, for systematic uncertainty estimation
-        if (prefix.Contains("TightProbe") && Mll >= 86. && Mll < 96.) {
+        // Tight probe only, evaluated in the full nominal window (|Mll-91.2| < 10)
+        if (prefix.Contains("TightProbe")) {
             const float dRCuts[] = {0.05, 0.15, 0.2};  // nominal (0.1) already done above
             for (float dRcut : dRCuts) {
                 bool passDRVar = PassIsoMuTriggerDR(probe, AllTrigObjs, dRcut);
@@ -221,6 +227,10 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
     for (const auto &probe : looseMuons) {
         fillTnP(probe, "TrigEff_LooseProbe");
     }
+
+    //==== Probe multiplicity per event (bin 0,1,2,... ; check 2+ probe fraction)
+    FillHist(this_syst + "/nTightProbe", nTightProbe, 1., 10, 0, 10);
+    FillHist(this_syst + "/nLooseProbe", nLooseProbe, 1., 10, 0, 10);
 }
 
 bool Probe::PassIsoMuTrigger(const Muon &mu, const RVec<TrigObj> &trigObjs) {
