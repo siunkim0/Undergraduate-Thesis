@@ -65,6 +65,7 @@ void Probe::executeEventFromParameter() {
     RVec<Muon> tightMuons;
     for (const auto &mu : AllMuons) {
         if (mu.Pt() < 10. || fabs(mu.Eta()) > 2.4) continue;
+        if (!mu.PassID(Muon::MuonID::POG_LOOSE)) continue;
         looseMuons.push_back(mu);
         if (mu.PassID(Muon::MuonID::POG_TIGHT) && mu.PassID(Muon::MuonID::POG_PFISO_TIGHT)) {
             tightMuons.push_back(mu);
@@ -96,7 +97,7 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
     //
     //  Tag:   Tight ID + PFIso tight + pt > TriggerSafePtCut + HLT trigger-matched
     //  Probe: (1) TightProbe: Tight ID + PFIso tight
-    //         (2) LooseProbe: loose muon
+    //         (2) LooseProbe: Loose ID (POG_LOOSE)
     //  Pass:  dR < 0.1 to HLT trigger object (bit 1)
     //  Mass window: |Mll - 91.2| < 10 GeV (nominal)
     //
@@ -223,7 +224,7 @@ void Probe::measIsoMu24TrigEff(RVec<Muon> &tightMuons, RVec<Muon> &looseMuons,
         fillTnP(probe, "TrigEff_TightProbe");
     }
 
-    //==== 2) Loose probe (inclusive)
+    //==== 2) Loose probe (Loose ID)
     for (const auto &probe : looseMuons) {
         fillTnP(probe, "TrigEff_LooseProbe");
     }
