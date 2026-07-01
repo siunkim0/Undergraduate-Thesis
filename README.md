@@ -19,7 +19,7 @@ The project serves both as an undergraduate thesis and as a practical guide for 
 
 **Main result:**
 ```
-SF = 0.934 ± 0.001 (stat.) ± 0.002 (syst.)
+SF = 0.973 ± 0.001 (stat.) ± 0.001 (syst.)
 ```
 
 
@@ -41,7 +41,7 @@ Data format: NanoAOD v9
 |---|---|
 | **Tag** | Tight ID + PF Iso tight + pT > 26 GeV + HLT trigger matched (ΔR < 0.1) |
 | **Probe (Tight)** | Tight ID + PF Iso tight + pT > 10 GeV |
-| **Probe (Loose)** | Tracker muon + pT > 10 GeV |
+| **Probe (Loose)** | Loose ID + pT > 10 GeV |
 | **Pass** | Probe matched to HLT trigger object (ΔR < 0.1, filterBit 1) |
 | **Mass window** | \|m_μμ − 91.2\| < 10 GeV |
 | **Pair separation** | ΔR(tag, probe) > 0.3 |
@@ -66,20 +66,23 @@ https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/triggerO
 
 ## Results
 
-### Trigger Efficiency (Tight Probe)
+### Trigger Efficiency
 
-| Variable | Data ε | MC ε | SF |
+| Probe | Data ε | MC ε | SF |
 |----------|--------|------|-----|
-| Overall (86–96 GeV) | 0.757 ± 0.001 | 0.811 ± 0.001 | 0.934 ± 0.001 ± 0.002 |
+| Tight (ID + Iso) | 0.792 ± 0.001 | 0.815 ± 0.001 | 0.973 ± 0.001 ± 0.001 |
+| Loose (Loose ID) | 0.735 ± 0.001 | 0.767 ± 0.001 | 0.958 ± 0.002 |
+
+Efficiencies are integrated inclusively over all probes with pT > 10 GeV in the nominal mass window (86–96 GeV).
 
 
 ### Systematic Uncertainties
 
 | Source | ΔSF |
 |--------|-----|
-| Mass window variation (±5 to ±20 GeV) | 0.002 |
+| Mass window variation (±5 to ±20 GeV) | 0.001 |
 | ΔR matching cone (0.05 to 0.20) | < 0.001 |
-| **Total** | **0.002** |
+| **Total** | **0.001** |
 
 
 ## Project Structure
